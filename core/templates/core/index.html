@@ -1,0 +1,42 @@
+<!-- chat/templates/chat/room.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+</head>
+<body>
+    <h1>test notifications ws</h1>
+    <input id="user_id" />
+    <input id="app_id"  value="qesi3Vb5mJSmEeULuYXVQD68Uc7yv2NA5d9wjEQHZyEoQ67zFoJNWWzzNh8ZyNkjvv2jnmyUjcnJLuEKnnH7ZNkvx6yGc3vr3peG9mmXramYwY96FQwTvyJMCPfPEKvUJWxfQxMZ4CBMMJVF7qGytd"/>
+    <button onclick="lancer()">Lancer</button>
+    <script src="{% static 'core/js/pusher.js' %}" ></script>
+    <script>
+
+
+
+
+
+        function lancer(){
+
+            var val = document.querySelector('#user_id').value;
+            var app_key = document.querySelector('#app_id').value;
+
+            PushBack.init(app_key, val);
+            PushBack.subscribe(
+                function(e) {
+                    console.log(e, 'on a recu')
+                    alert(e);
+                },
+                function(e) {
+                    alert('deconnection');
+                }
+            );
+        }
+
+
+    </script>
+</body>
+
+</html>

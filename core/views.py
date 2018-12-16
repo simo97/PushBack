@@ -1,6 +1,6 @@
 import json
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Application, Client, Notification, handle_notification
 from .utils import get_token, get_error_res, get_success_res
@@ -11,6 +11,10 @@ routes to create :
 /registerusers : { app_token: '', users: [ user_id,... ] } POST
 /notify : {app_token:'', users: [user_id,....], content: 'JSON{}' }
 """
+
+
+def hello(request):
+    return HttpResponse('PushBack')
 
 
 @csrf_exempt

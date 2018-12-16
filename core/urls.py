@@ -8,5 +8,6 @@ app_name = 'api'
 urlpatterns = [
     path('register/', register_users, name='register_user'),
     path('notify/', notify, name='notify_user'),
-    path('testpage/', testpage, name='test_ws')
+    path('testpage/', testpage, name='test_ws'),
+
 ]

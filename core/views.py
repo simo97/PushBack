@@ -19,6 +19,12 @@ def hello(request):
 
 @csrf_exempt
 def register_users(request):
+    """
+    Used to register a list of user for one application it should be used to register. it take argument with POST
+    like { 'app_token': '', 'users': [user_id, user_id, ...] }.
+    :param request:
+    :return:
+    """
     _token = get_token(request.POST)
     if not _token:
         return get_error_res('No app_token provided  unable to bind this request to any registered app', 403)
@@ -39,6 +45,15 @@ def register_users(request):
 
 @csrf_exempt
 def notify(request):
+    """
+    To send one notification to one or many user, it take the app_token , the notification content and the list of
+    concerned users.
+
+    The users are only represented by theirs ids
+
+    :param request:
+    :return:
+    """
     _token = get_token(request.POST)
     if not _token:
         return get_error_res('No app_token provided  unable to bind this request to any registered app', 403)

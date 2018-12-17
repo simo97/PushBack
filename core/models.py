@@ -9,7 +9,13 @@ from django.dispatch import receiver
 
 
 class Application(models.Model):
-    name = models.CharField(max_length=30, verbose_name=_('Nom de l\'application'))
+    """
+    Represent a registered app.
+
+    Notification and Client a link to one app, when created it generate a app_token which should be used
+    in any request send to the PushBack server.
+    """
+    name = models.CharField(max_length=30, verbose_name=_('Nom de l\'application'))  # application
     app_token = models.CharField(max_length=150, editable=False, verbose_name=_("Token d'acces"), null=True,)
 
     def __str__(self):
@@ -22,6 +28,12 @@ class Application(models.Model):
 
 
 class Notification(models.Model):
+    """
+    Represent one notification, One Notification in related to many clients.
+
+    It store one internal_uuid used as internal_id and a content. That content represent the notification's content
+    as it has been sent by the app server, this content should be on a text form (XML, JSON, etc)
+    """
     content = models.TextField(verbose_name=_('Contenu de la notification en JSON'))
     received_date = models.DateTimeField(auto_now=True, verbose_name=_('Date a laquelle il est arriver sur le serveur'))
     internal_uuid = models.CharField(verbose_name=_('Identifiant interne'), max_length=50, editable=False)
@@ -34,6 +46,10 @@ class Notification(models.Model):
 
 
 class Client(models.Model):
+    """
+    A client is a representation of one user who should receive a notification, more preciselly a user which
+    is currently connected and register in the application
+    """
     app = models.ForeignKey(Application, on_delete=models.CASCADE,verbose_name=_('application'))
     client_id = models.IntegerField(verbose_name=_('ID in app'), null=True,
                                     help_text=_('Identifiant du client dans la BD du server'))

@@ -18,6 +18,7 @@ from django.urls import path, include
 from core.views import hello
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('api/v1/', include('core.urls', namespace='api')),
     path('', hello, name='index')

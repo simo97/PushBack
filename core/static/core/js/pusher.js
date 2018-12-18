@@ -10,7 +10,7 @@ var PushBack = {
 
     subscribe: function(onNotification, onClose){
         this._chatSocket = new WebSocket(
-        'ws://' + window.location.host +
+        'wss://' + window.location.host +
         '/ws/notifications/subscribe/'+this._app_key+'/'+ this._client_id +'/');
 
         this._chatSocket.onmessage = onNotification

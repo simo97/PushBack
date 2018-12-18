@@ -1,0 +1,16 @@
+<h3>User's app list</h3>
+<hr/>
+<ul>
+{% for app in application_list %}
+
+    <li > <a href="{% url 'webapp:application-detail' app.pk %}">{{app}}</a>  <a href="{% url 'webapp:application-delete' app.pk %}">delete</a></li>
+
+{% empty %}
+<strong>
+    No application for now, create a new one here : {% url 'webapp:application-new' %}
+</strong>
+{% endfor %}
+
+</ul>
+<hr/>
+<a href="{% url 'webapp:application-new' %}">Create new application</a>

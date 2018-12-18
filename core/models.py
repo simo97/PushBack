@@ -16,7 +16,10 @@ class Application(models.Model):
     in any request send to the PushBack server.
     """
     name = models.CharField(max_length=30, verbose_name=_('Nom de l\'application'))  # application
+    description = models.TextField(blank=True, null=True, verbose_name=_('description of the app'))
     app_token = models.CharField(max_length=150, editable=False, verbose_name=_("Token d'acces"), null=True,)
+    account = models.ForeignKey('webapp.Account', on_delete=models.CASCADE)
+    active = models.BooleanField(default=True, verbose_name=_('Application still alive'))
 
     def __str__(self):
         return self.name
@@ -34,6 +37,7 @@ class Notification(models.Model):
     It store one internal_uuid used as internal_id and a content. That content represent the notification's content
     as it has been sent by the app server, this content should be on a text form (XML, JSON, etc)
     """
+    application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name='notifications')
     content = models.TextField(verbose_name=_('Contenu de la notification en JSON'))
     received_date = models.DateTimeField(auto_now=True, verbose_name=_('Date a laquelle il est arriver sur le serveur'))
     internal_uuid = models.CharField(verbose_name=_('Identifiant interne'), max_length=50, editable=False)

@@ -1,0 +1,20 @@
+App token : <br/>
+{{ application.app_token }}
+
+App name : {{ application }} <br/>
+App description : {{ application.description }} <br/>
+
+Notification list : <br/>
+
+<hr/>
+<ul>
+{% for notification in notifications %}
+
+    <li > <a href="{# url 'webapp:application-detail' app.pk #}">{{notification}}</a> </li>
+
+{% empty %}
+<strong>
+    No notification for now
+</strong>
+{% endfor %}
+</ul>

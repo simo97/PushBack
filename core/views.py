@@ -69,7 +69,7 @@ def notify(request):
         clients = Client.objects.filter(client_id__in=list(_users), app=app)  # retrieve users which are related to the
         # app and which has been send in the query, now we have clients which should be notified
         _content = json.loads(request.POST['content'])
-        notification = Notification(content=_content)
+        notification = Notification(content=_content, application=app)
         notification.save()
         for cl in clients:
             notification.clients.add(cl)  # connect the client to the notification

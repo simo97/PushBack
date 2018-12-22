@@ -5,7 +5,7 @@ A light an very simple notification server for web apps based on WebSockets. Pus
 
 ## How it work ?
 
-PushBack has been design to be simple a usage, from server to server or server to client. It work in a simple way, 3 steps to be specific :
+PushBack has been design to be simple a usage, from server to server or server to client. It work in a simple way, 4 steps to be specific :
 
 * **Application creation**
 

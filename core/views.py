@@ -74,8 +74,7 @@ def notify(request):
         for cl in clients:
             print(cl)
             notification.clients.add(cl)  # connect the client to the notification
-            
-        notification.save()
+        print(notification)
 
         handle_notification(notification, True)
         return get_success_res('Notifications send with success with success')

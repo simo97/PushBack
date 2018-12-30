@@ -1,7 +1,7 @@
 PushBack, Notification server
 =======================
 
-A light an very simple notification server for web apps based on WebSockets. PushBack is a self-hosted notification server built to be use in a web application. It is design to be very simple of use and lightweight.
+A light and very simple notification server for web apps based on WebSockets. PushBack is a self-hosted notification server built to be use in a web application. It is design to be very simple of use and lightweight.
 
 ## How it work ?
 

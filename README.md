@@ -78,6 +78,9 @@ $ python manage.py runserver
 
 *You are done* 
 
+## Can't deploy it ? relax there is a cloud version ( free of use )
+[PushBack Cloud](http://pushback-server.herokuapp.com/) just create an account there
+
 ## TODO
 
 - write tests
@@ -100,4 +103,4 @@ You want to contribute ? it is simple just :
 - *made modifications, features, etc*
 - *made a PR on a new branch named as the added feature , eg: **feat-statistic***
 
-[PushBack Cloud](http://pushback-server.herokuapp.com/)
+

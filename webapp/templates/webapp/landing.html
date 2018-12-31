@@ -1,4 +1,4 @@
-{% load static widget_tweaks %}
+{% load static widget_tweaks i18n %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -46,7 +46,12 @@
                             </div>
                        {% endfor %}
                        <input type="submit" value="Connexion" class="btn btn-success">
+
+                       {% if redirect_field_value %}
+                          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                       {% endif %}
                    </form>
+                   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
 
                </div>
                <div class="col-lg-6">

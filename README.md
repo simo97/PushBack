@@ -28,7 +28,7 @@ the query's parameter are :
 
   - ```users``` : list of user concern by the notification 
   - ```conntent``` : the notification content, ideally it should be a JSON data but you are free to use any kind of text based content. 
-  - ```app_token``` : the token related to your application.*
+  - ```app_token``` : the token related to your application.
 
 * **Receive a notification**
 

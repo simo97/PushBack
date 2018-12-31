@@ -22,11 +22,14 @@
       <h5 class="my-0 mr-md-auto font-weight-normal">PushBack</h5>
       <nav class="my-2 my-md-0 mr-md-3">
           {% block nav_list %}
-          <a class="p-2 text-dark" href="{% url 'webapp:application-list' %}">Applications</a>
-          <a class="p-2 text-dark" href="{% url 'account_change_password' %}">My account</a>
+
           {% endblock nav_list %}
       </nav>
+       {% if request.user.is_authenticated %}
       <a class="btn btn-outline-danger" href="{% url 'account_logout' %}">Logout</a>
+       {% else %}
+       <a class="btn btn-outline-success" href="{% url 'index' %}">Sign up</a>
+       {% endif %}
     </div>
     <div class="container">
         {% block content %}

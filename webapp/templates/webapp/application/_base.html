@@ -4,8 +4,11 @@
 
 {# ----------------- nav list  #}
 {% block nav_list %}
-{{ block.super }}
+<a class="p-2 text-dark" href="{% url 'webapp:application-list' %}">Applications</a>
+          <a class="p-2 text-dark" href="{% url 'account_change_password' %}">My account</a>
 {% endblock nav_list %}
 
 
 {% block title %}Application {% endblock title %}
+
+

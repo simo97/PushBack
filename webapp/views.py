@@ -50,6 +50,7 @@ class ApplicationDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         ctx = super(ApplicationDetailView, self).get_context_data(**kwargs)
         ctx['notifications'] = self.object.notifications.all()
+        ctx['clients'] = self.object.client_set.all()
         return ctx
 
 

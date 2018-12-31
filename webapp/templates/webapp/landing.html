@@ -1,4 +1,4 @@
-{% load static %}
+{% load static widget_tweaks %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,15 +22,46 @@
           <h5 class="my-0 mr-md-auto font-weight-normal">PushBack</h5>
           <nav class="my-2 my-md-0 mr-md-3">
               {% block nav_list %}
-              <a class="p-2 text-dark" href="https://github.com/simo97/PushBack">Documentation</a>
+              <a class="p-2 text-dark" target="_blank" href="https://github.com/simo97/PushBack">Documentation</a>
               {% endblock nav_list %}
           </nav>
        </div>
        <div class="container">
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-              <h1 class="display-4">Pricing</h1>
-              <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+              <h1 class="display-4">PushBack, A notification server</h1>
+              <p class="lead">
+                  A light and very simple notification server for web apps based on WebSockets.
+                  PushBack is a self-hosted notification server built to be use in a web application.
+                  It is design to be very simple of use, fast and <strong>lightweight</strong>.
+              </p>
             </div>
+           <div class="row">
+               <div class="col-lg-6">
+                   <center><strong>Login form</strong></center>
+                   <form action="{% url 'account_login' %}" method="post">
+                       {% for field in login_form.visible_fields %}
+                            <div class="fieldWrapper">
+                                {{ field.errors }}
+                                {{  field.label_tag }} {% render_field field class="form-control"  %}
+                            </div>
+                       {% endfor %}
+                       <input type="submit" value="Connexion" class="btn btn-success">
+                   </form>
+
+               </div>
+               <div class="col-lg-6">
+                   <center><strong>Create a new account</strong></center>
+                   <form action="{% url 'account_signup' %}" method="post">
+                   {% for field in signup_form.visible_fields %}
+                        <div class="fieldWrapper">
+                            {{ field.errors }}
+                            {{  field.label_tag }} {% render_field field class="form-control"  %}
+                        </div>
+                    {% endfor %}
+                       <input type="submit" value="Inscription" class="btn btn-success">
+                   </form>
+               </div>
+           </div>
        </div>
 
     <!-- Bootstrap core JavaScript

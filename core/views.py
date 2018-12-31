@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Application, Client, Notification, handle_notification
 from .utils import get_token, get_error_res, get_success_res
+from allauth.account.forms import LoginForm, SignupForm
 
 # Create your views here.
 """
@@ -14,7 +15,11 @@ routes to create :
 
 
 def hello(request):
-    return HttpResponse('PushBack')
+    ctx = {
+        'login_form': LoginForm(),
+        'signup_form': SignupForm()
+    }
+    return render(request, 'webapp/landing.html', ctx)
 
 
 @csrf_exempt

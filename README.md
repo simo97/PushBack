@@ -90,6 +90,7 @@ What i am planning for this project :
 - Add a bootstrap template on it to let user browse it applicaitons and other content ( notifications, statistics, etc)
 - Add a module for statistics (received notifications, delivered notification, etc)
 - Add features for text based chat
+- Add docker support
 - **look for more ideas** ;-) 
 
 ## Contributing

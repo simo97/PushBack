@@ -1,20 +1,64 @@
-App token : <br/>
-{{ application.app_token }}
+{% extends 'webapp/application/_base.html' %}
 
-App name : {{ application }} <br/>
-App description : {{ application.description }} <br/>
 
-Notification list : <br/>
+{% block content %}
 
-<hr/>
-<ul>
-{% for notification in notifications %}
-
-    <li > <a href="{# url 'webapp:application-detail' app.pk #}">{{notification}}</a> </li>
-
-{% empty %}
-<strong>
-    No notification for now
-</strong>
-{% endfor %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Details</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Notifications</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clients</a>
+  </li>
 </ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <br/>
+      <div class="alert alert-light">
+          <h4 class="alert-heading"><strong>Name</strong> &nbsp;{{ application }}</h4>
+          <hr/>
+          <p style="word-wrap: break-word;">{{ application.description }}</p>
+      </div>
+      <br/>
+      <div class="alert alert-info" role="alert">
+          <h4 class="alert-heading">Application token</h4>
+          <p style="word-wrap: break-word;font-weight: bold">{{ application.app_token }}</p>
+          <hr/>
+          <p class="mb-0">Copy it and use it in you  code.</p>
+      </div>
+
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <ul>
+        {% for notification in notifications %}
+
+            <li > <a href="{# url 'webapp:application-detail' app.pk #}">{{notification}}</a> </li>
+
+        {% empty %}
+        <strong>
+            No notification for now
+        </strong>
+        {% endfor %}
+      </ul>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    client
+  </div>
+</div>
+
+
+
+{% endblock content %}
+
+
+{% block js_script %}
+<script>
+    $(function () {
+        //$('#content').tab('show')
+    })
+</script>
+{% endblock js_script %}

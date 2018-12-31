@@ -1,16 +1,46 @@
-<h3>User's app list</h3>
-<hr/>
-<ul>
-{% for app in application_list %}
+{% extends 'webapp/application/_base.html' %}
 
-    <li > <a href="{% url 'webapp:application-detail' app.pk %}">{{app}}</a>  <a href="{% url 'webapp:application-delete' app.pk %}">delete</a></li>
 
-{% empty %}
-<strong>
-    No application for now, create a new one here : {% url 'webapp:application-new' %}
-</strong>
-{% endfor %}
 
-</ul>
-<hr/>
-<a href="{% url 'webapp:application-new' %}">Create new application</a>
+{# ------------- content ------------------#}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <H1>Application list</H1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-success" href="{% url 'webapp:application-new' %}">New application</a>
+        </div>
+
+        <div class="col-md-12">
+            <table class="table table-responsible">
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                {% for app in application_list %}
+                <tr>
+                    <td>
+                        <a href="{% url 'webapp:application-detail' app.pk %}">{{app}}</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'webapp:application-delete' app.pk %}">delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>No application</td>
+                    <td>available now</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <hr/>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

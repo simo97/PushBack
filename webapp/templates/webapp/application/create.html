@@ -1,9 +1,32 @@
 {% extends 'webapp/application/_base.html' %}
 
+{% load widget_tweaks %}
+
 
 {% block content %}
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Create">
+    <h3>Create a new application</h3>
+    {{ form.non_field_errors }}
+
+    {% if form.subject.errors %}
+        <ol>
+        {% for error in form.subject.errors %}
+            <li><strong>{{ error|escape }}</strong></li>
+        {% endfor %}
+        </ol>
+    {% endif %}
+
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{  field.label_tag }} {% render_field field class="form-control"  %}
+        </div>
+    {% endfor %}
+
+    <input type="submit" value="Create" class="btn btn-success">
 </form>
 {% endblock content %}

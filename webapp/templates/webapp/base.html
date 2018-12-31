@@ -23,10 +23,10 @@
       <nav class="my-2 my-md-0 mr-md-3">
           {% block nav_list %}
           <a class="p-2 text-dark" href="{% url 'webapp:application-list' %}">Applications</a>
-          <a class="p-2 text-dark" href="#">My account</a>
+          <a class="p-2 text-dark" href="{% url 'account_change_password' %}">My account</a>
           {% endblock nav_list %}
       </nav>
-      <a class="btn btn-outline-danger" href="#">Logout</a>
+      <a class="btn btn-outline-danger" href="{% url 'account_logout' %}">Logout</a>
     </div>
     <div class="container">
         {% block content %}

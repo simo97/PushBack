@@ -13,9 +13,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 from decouple import config
 import dj_database_url
+from django.urls import reverse_lazy as rv_l
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -54,7 +58,8 @@ INSTALLED_APPS = [
     'core',
     'channels',
     'channels_redis',
-    'corsheaders'
+    'corsheaders',
+    'widget_tweaks'
 ]
 
 
@@ -77,7 +82,9 @@ ROOT_URLCONF = 'pushback.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'pushback', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -155,6 +162,9 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/assets/'
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -250,3 +260,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERSION': 'v2.12',
     }
 """
+
+LOGIN_REDIRECT_URL = rv_l('webapp:application-list')
+ACCOUNT_EMAIL_REQUIRED = False

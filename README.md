@@ -1,7 +1,7 @@
 PushBack, Notification server
 =======================
 
-A light an very simple notification server for web apps based on WebSockets. PushBack is a self-hosted notification server built to be use in a web application. It is design to be very simple of use and lightweight.
+A light and very simple notification server for web apps based on WebSockets. PushBack is a self-hosted notification server built to be use in a web application. It is design to be very simple of use and lightweight.
 
 ## How it work ?
 
@@ -90,6 +90,7 @@ What i am planning for this project :
 - Add a bootstrap template on it to let user browse it applicaitons and other content ( notifications, statistics, etc)
 - Add a module for statistics (received notifications, delivered notification, etc)
 - Add features for text based chat
+- Add docker support
 - **look for more ideas** ;-) 
 
 ## Contributing

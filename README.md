@@ -69,6 +69,10 @@ $ pip install -r requirements.txt
 ```bash
 $ python manage.py createsuperuser
 ```
+- Apply migrations :
+```bash
+$ python manage.py migrate
+```
 - Run the application :
 ```bash
 $ python manage.py runserver

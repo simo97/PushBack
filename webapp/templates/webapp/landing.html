@@ -37,7 +37,7 @@
             </div>
            <div class="row">
                <div class="col-lg-6">
-                   <center><strong>Login form</strong></center>
+                   <center><strong>Connect to your account</strong></center>
                    <form action="{% url 'account_login' %}" method="post">
                        {% for field in login_form.visible_fields %}
                             <div class="fieldWrapper">
@@ -63,6 +63,14 @@
                </div>
            </div>
        </div>
+
+       <footer class="footer">
+          <div class="container">
+            <span class="text-muted">
+                <center>Copyright <a href="https://github.com/simo97/" target="_blank">@simo97</a> - 2018</center>
+            </span>
+          </div>
+        </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

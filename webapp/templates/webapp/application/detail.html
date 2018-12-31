@@ -14,10 +14,13 @@
   <li class="nav-item">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Clients</a>
   </li>
+    <li class="nav-item">
+        <a href="#tuto_tab" class="nav-link" id="tuto-tab" data-toggle="tab" role="tab" aria-controls="how_to" aria-selected="false">How to?</a>
+    </li>
 </ul>
 
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <br/>
       <div class="alert alert-light">
           <h4 class="alert-heading"><strong>Name</strong> &nbsp;{{ application }}</h4>
@@ -33,7 +36,7 @@
       </div>
 
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br/>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><br/>
       <div class="row">
           <div class="col-md-12">
               <table class="table  table-striped">
@@ -64,7 +67,7 @@
 
 
   </div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <br/>
       <div class="row">
           <div class="col-md-12">
@@ -92,6 +95,57 @@
           </div>
       </div>
   </div>
+    <div class="tab-pane fade" id="tuto_tab">
+        <h3>How to use PushBack server</h3>
+        <hr/>
+        <ul>
+            <li><h4>Create application and save the token</h4></li>
+            <li><h4>Register users</h4></li>
+            <p>
+                You should now register all your users in the notification server and the application,
+                registering all the users is not about saving their first name etc, it is only about user's ID,
+                in fact you will just provide a list (array) of those ID <code>[id1, id2, etc]</code>. The concerned endpoint is : <code>/api/v1/register/</code>
+            </p>
+            <li><h4>Send notification</h4></li>
+            <p>
+                Sending a notification is quite simple, it is a POST request to a HTTP endpoint on PushBack server:
+                <code>/api/v1/notify/ </code>
+                the query's parameter are :
+                <ul>
+                    <li><code>users</code> : list of user concern by the notification</li>
+            <li><code>conntent</code> : the notification content, ideally it should be a JSON data but you are free to use any kind of text based conte</li>
+            <li><code>app_token</code> : the token related to your application.</li>
+                </ul>
+            </p>
+            <li><h4>Listen for notification in client application</h4></li>
+            <p>
+                A javascript client sdk is available to enable a connected user to listen for the notification from the server,
+                using it just require a pass the current user's ID and 2 callbacks,
+                one to perform an action when a notification happen and a second when it is disconnected to the server.
+                Here is a sample of code :<br/>
+                <textarea disabled style="width:100%;" rows="15">
+                        <script src="/static/core/js/pusher.js" ></script>
+                        <script>
+                          PushBack.init(APP_TOKEN_HERE, USER_ID);
+                          PushBack.subscribe(
+                              function(e) {
+                                  // when a notification happen
+                                  console.log(e.data)
+                                  alert(e.data);
+                              },
+                              function(e) {
+                                  // when disconnected to the WS server (for example when changing a page)
+                                  alert('deconnection');
+                              }
+                          );
+                        </script>
+                </textarea>
+
+
+            </p>
+
+        </ul>
+    </div>
 </div>
 
 

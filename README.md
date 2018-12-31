@@ -26,7 +26,7 @@ Sending a notification is quite simple, it is a POST request to a HTTP endpoint 
 ```/api/v1/notify/```
 the query's parameter are :
 
-  - ```user list``` : list of user concern by the notification 
+  - ```users``` : list of user concern by the notification 
   - ```conntent``` : the notification content, ideally it should be a JSON data but you are free to use any kind of text based content. 
   - ```app_token``` : the token related to your application.*
 

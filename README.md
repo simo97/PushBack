@@ -50,7 +50,7 @@ A javascript client sdk is available to enable a connected user to listen for th
   );
 </script>
 ```
-That is all, you need to receive a notification, no need to embed the application's token in you client code.
+That is all, you need to receive a notification.
 
 ## How to deploy it locally
 

@@ -1,4 +1,4 @@
-PushBack, Notification server
+PushBack, notification server.
 =======================
 
 A light and very simple notification server for web apps based on WebSockets. PushBack is a self-hosted notification server built to be use in a web application. It is design to be very simple of use and lightweight.
@@ -28,7 +28,7 @@ the query's parameter are :
 
   - ```users``` : list of user concern by the notification 
   - ```conntent``` : the notification content, ideally it should be a JSON data but you are free to use any kind of text based content. 
-  - ```app_token``` : the token related to your application.*
+  - ```app_token``` : the token related to your application.
 
 * **Receive a notification**
 
@@ -50,7 +50,7 @@ A javascript client sdk is available to enable a connected user to listen for th
   );
 </script>
 ```
-That is all, you need to receive a notification, no need to embed the application's token in you client code.
+That is all, you need to receive a notification.
 
 ## How to deploy it locally
 
@@ -69,6 +69,10 @@ $ pip install -r requirements.txt
 ```bash
 $ python manage.py createsuperuser
 ```
+- Apply migrations :
+```bash
+$ python manage.py migrate
+```
 - Run the application :
 ```bash
 $ python manage.py runserver
@@ -77,6 +81,9 @@ $ python manage.py runserver
 **It's done** the server will be available a [localhost:8000]('localhost:8000')
 
 *You are done* 
+
+## Can't deploy it ? relax there is a cloud version ( free of use )
+[PushBack Cloud](http://pushback-server.herokuapp.com/) just create an account there
 
 ## TODO
 
@@ -100,4 +107,4 @@ You want to contribute ? it is simple just :
 - *made modifications, features, etc*
 - *made a PR on a new branch named as the added feature , eg: **feat-statistic***
 
-[PushBack Cloud](http://pushback-server.herokuapp.com/)
+

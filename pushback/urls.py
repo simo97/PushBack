@@ -20,7 +20,8 @@ from core.views import hello
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-    path('api/v1/', include('core.urls', namespace='api')),
+    path('api/v1/', include('core.api.urls', namespace='api')),
+    path('core/', include('core.urls', namespace='api')),
     path('app/', include('webapp.urls', namespace='webapp')),  # the webapp here
     path('accounts/', include('allauth.urls')),
     path('invitations/', include('invitations.urls', namespace='invitations')),

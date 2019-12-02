@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     #  'allauth.socialaccount.providers.github',
     #  'allauth.socialaccount.providers.google',
     #  'allauth.socialaccount.providers.facebook',
+    'rest_framework',
     'invitations',
     'django_mail_admin',
     'webapp',
@@ -263,3 +264,36 @@ SOCIALACCOUNT_PROVIDERS = {
 
 LOGIN_REDIRECT_URL = rv_l('webapp:application-list')
 ACCOUNT_EMAIL_REQUIRED = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+
+    ],
+    # Base API policies
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+
+    'ORDERING_PARAM': 'ordering',
+
+    # Pagination
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+
+    # Testing
+    'TEST_REQUEST_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+
+    'NON_FIELD_ERRORS_KEY': 'errors',
+
+}
